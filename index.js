@@ -8,9 +8,9 @@
 
 exports.handler = function(context, event, callback) {
   // set-up the variables that this Function will use to forward a phone call using TwiML
-  
+
   // REQUIRED - you must set this
-  let phoneNumber = event.PhoneNumber || "NUMBER TO FORWARD TO";    
+  let phoneNumber = event.PhoneNumber || "NUMBER TO FORWARD TO";
   // OPTIONAL
   let callerId =  event.CallerId || null;
   // OPTIONAL
@@ -21,7 +21,7 @@ exports.handler = function(context, event, callback) {
   // generate the TwiML to tell Twilio how to forward this call
   let twiml = new Twilio.twiml.VoiceResponse();
 
-  let allowedThrough = true
+  let allowedThrough = true;
   if (allowedCallers.length > 0) {
     if (allowedCallers.indexOf(event.From) === -1) {
       allowedThrough = false;    
@@ -30,19 +30,19 @@ exports.handler = function(context, event, callback) {
 
   let dialParams = {};
   if (callerId) {
-    dialParams.callerId = callerId
+    dialParams.callerId = callerId;
   }
   if (timeout) {
-    dialParams.timeout = timeout
+    dialParams.timeout = timeout;
   }
-  
+
   if (allowedThrough) {
     twiml.dial(dialParams, phoneNumber);
   }
   else {
     twiml.say('Sorry, you are calling from a restricted number. Good bye.');
   }
-  
+
   // return the TwiML
   callback(null, twiml);
 };
