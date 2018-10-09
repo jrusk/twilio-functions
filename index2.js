@@ -4,6 +4,11 @@
  *  This Function will forward a call to another phone number. If the call isn't answered or the line is busy, 
  *  the call is optionally forwarded to a specified URL. You can optionally restrict which calling phones 
  *  will be forwarded.
+ *
+ play message for time
+ dial forward-number
+ requires returning twiml twice
+ *
  */
 
 exports.handler = function(context, event, callback) {
