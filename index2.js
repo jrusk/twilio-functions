@@ -7,7 +7,8 @@
  *
  play message for time
  dial forward-number
- requires returning twiml twice
+
+ requires returning twiml twice?
  *
  */
 
@@ -42,6 +43,7 @@ exports.handler = function(context, event, callback) {
   }
 
   if (allowedThrough) {
+    twiml.play('https://api.twilio.com/cowbell.mp3');
     twiml.dial(dialParams, phoneNumber);
   }
   else {
