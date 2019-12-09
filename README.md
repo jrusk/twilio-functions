@@ -1,10 +1,12 @@
 # Example Twilio Functions and Templates
 
-`call-foward.js` - fowards calls to an external number.
+`call-foward.js` - Fowards calls to an external number.
 
-`email-fax-sendgrid.js` - use SendGrid to email inbound fax.
+`email-fax-sendgrid.js` - Use SendGrid to email inbound fax.
 
-`play-then-foward.js` - play a message then foward calls to an external number.
+`play-then-foward.js` - Play a message then foward calls to an external number.
+
+`query-param-to-xml.js` - Compares query param `patterns` to param `cid_name` and returns XML with true or false.
 
 ### Installation
 
