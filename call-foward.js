@@ -1,8 +1,9 @@
 /**
  *  Call Forward Template
- * 
- *  This Function will forward a call to another phone number. If the call isn't answered or the line is busy, 
- *  the call is optionally forwarded to a specified URL. You can optionally restrict which calling phones 
+ *
+ *  This Function will forward a call to another phone number.
+ *  If the call isn't answered or the line is busy, the call is optionally
+ *  forwarded to a specified URL. You can optionally restrict which calling phones
  *  will be forwarded.
  */
 
@@ -10,21 +11,21 @@ exports.handler = function(context, event, callback) {
   // set-up the variables that this Function will use to forward a phone call using TwiML
 
   // REQUIRED - you must set this
-  let phoneNumber = event.PhoneNumber || "NUMBER TO FORWARD TO";
+  let phoneNumber = event.PhoneNumber || 'NUMBER TO FORWARD TO';
   // OPTIONAL
-  let callerId =  event.CallerId || null;
+  let callerId = event.CallerId || null;
   // OPTIONAL
   let timeout = event.Timeout || null;
   // OPTIONAL
   let allowedCallers = event.allowedCallers || [];
-  
+
   // generate the TwiML to tell Twilio how to forward this call
   let twiml = new Twilio.twiml.VoiceResponse();
 
   let allowedThrough = true;
   if (allowedCallers.length > 0) {
     if (allowedCallers.indexOf(event.From) === -1) {
-      allowedThrough = false;    
+      allowedThrough = false;
     }
   }
 
@@ -38,8 +39,7 @@ exports.handler = function(context, event, callback) {
 
   if (allowedThrough) {
     twiml.dial(dialParams, phoneNumber);
-  }
-  else {
+  } else {
     twiml.say('Sorry, you are calling from a restricted number. Good bye.');
   }
 
