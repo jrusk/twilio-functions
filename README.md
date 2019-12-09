@@ -1,4 +1,4 @@
-## Example Twilio Functions and Templates
+# Example Twilio Functions and Templates
 
 `call-foward.js` - fowards calls to an external number.
 `email-fax-sendgrid.js` - use SendGrid to email inbound fax.
